@@ -1,0 +1,49 @@
+<div *ngIf="!verFormulario">
+  <h3>Listado de Titulares</h3>
+  <hr>
+  <div style="margin-bottom: 5px" class="text-right" >
+    <button type="button" class="btn btn-primary btn-sm space-button" (click)="nuevaPersonaJuridica()" >
+      <i class="fa fa-plus"></i> Nuevo Titular (Juridica)
+    </button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="nuevaPersonaFisica()" >
+      <i class="fa fa-plus"></i> Nuevo Titular (Fisica)
+    </button>
+  </div>
+
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>
+          RUT
+        </th>
+        <th>
+          Tipo
+        </th>
+        <th>
+          Opciones
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let titular of titulares | async">
+        <td>{{ titular.rut }}</td>
+        <td>{{ getTipo(titular.type) }}</td>
+        <td class="div-options">
+          <button class="btn btn-sm btn-primary space-button" type="button" (click)="editarTitular(titular)">
+            <i class="fa fa-edit"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" type="button" (click)="eliminarTitular(titular)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="verFormulario">
+  <h3>{{ accion }} Titular</h3>
+  <hr>
+  <app-juridica *ngIf="verJuridica" [titular]="titularCurrent" (regresarEvent)="onEventoRegresar($event)">
+  </app-juridica>
+  <app-fisica *ngIf="verFisica" [titular]="titularCurrent" (regresarEvent)="onEventoRegresar($event)" ></app-fisica>
+</div>

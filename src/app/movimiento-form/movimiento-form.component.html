@@ -1,0 +1,48 @@
+<form autocomplete="off" [formGroup]="formData" novalidate>
+  <div class="row">
+    <div class="form-group col-md-6 required">
+      <label class="control-label">Cuenta</label>
+      <ng-select formControlName="account" 
+      (change)="onChangeCuenta($event)"
+      [items]="cuentas" bindLabel="number"></ng-select>
+      <div class="invalid-feedback">
+        Seleccionar Cuenta
+      </div>
+    </div>
+    <div class="form-group col-md-6 required">
+      <label class="control-label">Tipo de Movimiento</label>
+      <ng-select formControlName="typemov" [items]="tiposMovimientos" bindLabel="tipo" bindValue="codigo"></ng-select>
+      <div class="invalid-feedback">
+        Seleccionar tipo de movimiento
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-6 required">
+      <label class="control-label">Descripcion</label>
+      <textarea class="form-control" rows="3" maxlength="200" formControlName="description"></textarea>
+      <div class="invalid-feedback">
+        Diligenciar descripcion
+      </div>
+    </div>
+    <div class="form-group col-md-6 required">
+      <label class="control-label">Monto  {{ currencyActual }}</label>
+      <input class="form-control" formControlName="amount">
+      <div class="invalid-feedback">
+        Diligenciar Monto
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-12 text-right">
+      <button class="btn btn-success" type="button" style="margin-right: 5px" (click)="onGuardar()">
+        <i class="fa fa-save"></i> Guardar
+      </button>
+      <button class="btn btn-default" type="button" (click)="onRegresar()">
+        <i class="fa fa-arrow-left"></i> Regresar
+      </button>
+    </div>
+  </div>
+</form>

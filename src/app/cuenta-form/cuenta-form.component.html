@@ -1,0 +1,48 @@
+<form autocomplete="off" [formGroup]="formData" novalidate>
+    <div class="row">
+      <div class="form-group col-md-6 required">
+        <label class="control-label">Titular</label>
+        <ng-select formControlName="accountHolder"
+        [items]="titulares" bindLabel="rut"></ng-select>
+        <div class="invalid-feedback">
+          Seleccionar Titular
+        </div>
+      </div>
+      <div class="form-group col-md-6 required">
+        <label class="control-label">Moneda</label>
+        <ng-select formControlName="currency"  (change)="onChangeMoneda($event)"
+        [items]="monedas" bindLabel="codigo" bindValue="codigo"></ng-select>
+        <div class="invalid-feedback">
+          Seleccionar Moneda
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="form-group col-md-6 required">
+        <label class="control-label">Numero de cuenta</label>
+        <input class="form-control" formControlName="number">
+        <div class="invalid-feedback">
+          Diligenciar numero de cuenta
+        </div>
+      </div>
+      <div class="form-group col-md-6 required">
+        <label class="control-label">Saldo  {{ currencyActual }}</label>
+        <input class="form-control" formControlName="balance">
+        <div class="invalid-feedback">
+          Diligenciar Saldo
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="form-group col-md-12 text-right">
+        <button class="btn btn-success" type="button" style="margin-right: 5px" (click)="onGuardar()">
+          <i class="fa fa-save"></i> Guardar
+        </button>
+        <button class="btn btn-default" type="button" (click)="onRegresar()">
+          <i class="fa fa-arrow-left"></i> Regresar
+        </button>
+      </div>
+    </div>
+  </form>

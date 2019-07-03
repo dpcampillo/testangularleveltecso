@@ -1,0 +1,61 @@
+<div *ngIf="!verFormulario">
+  <h3>Listado de Movimientos</h3>
+  <hr>
+
+  <div class="row" style="margin-bottom: 5px">
+    <div class="col-md-6 form-group">
+      <label class="control-label">Filtrar por cuenta</label>
+      <ng-select [(ngModel)]="modelo.cuenta" [items]="cuentas"
+      (change)="onChangeCuenta($event)" bindLabel="number" bindValue="id"></ng-select>
+    </div>
+    <div class="col-md-6 text-right">
+      <button style="margin-top: 35px" type="button" class="btn btn-primary btn-sm space-button"
+        (click)="nuevoMovimiento()">
+        <i class="fa fa-plus"></i> Nuevo Movimiento
+      </button>
+    </div>
+  </div>
+
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>
+          Cuenta
+        </th>
+        <th>
+          Fecha
+        </th>
+        <th>
+          Tipo
+        </th>
+        <th>
+          Descripcion
+        </th>
+        <th>
+          Monto
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movimiento of movimientos">
+        <td>{{ movimiento.account.number }}</td>
+        <td>{{ movimiento.eventdate | date }}</td>
+        <td>{{ getTipo(movimiento.typemov) }}</td>
+        <td>{{ movimiento.description }}</td>
+        <td>{{ movimiento.account.currency }} {{ movimiento.amount | currency }}</td>
+      </tr>
+      <tr>
+        <td colspan="5" *ngIf="movimientos.length == 0" >
+          <div class="text-center" >
+              No hay movimiento para mostrar
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="verFormulario">
+  <h3>{{ accion }} Movimientos</h3>
+  <hr>
+  <app-movimiento-form (regresarEvent)="onEventoRegresar($event)" ></app-movimiento-form>
+</div>
