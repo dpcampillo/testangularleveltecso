@@ -1,32 +1,23 @@
-# Angular Pro Sidebar
+# Angular tecso Project
+
+Se tomo como base el proyecto https://azouaoui-med.github.io/angular-pro-sidebar
 
 A responsive sidebar template with dropdown menu built with angular 7 and bootstrap 4
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
 
-## Demo
+# Instalacion
 
-[Live preview](https://azouaoui-med.github.io/angular-pro-sidebar/demo/)
+Descargar el proyecto, ejecutar el comando npm install y luego ng serve 
+ir a la direccion http://localhost:4200/
 
-## Screenshot
+Nota: Debe estar la aplicacion de backend arriba para que se conecte.
 
-![sidebar](https://user-images.githubusercontent.com/25878302/50010090-d193f480-ffb8-11e8-98ef-3d7ffa6ddfe1.png)
+Para empezar debe estar registrado, si no lo esta puede acceder a esta pagina 
+http://localhost:4200/register
 
-## Quick start
+Luego de registrado el sistema lo redirecciona a la pagina de login
+http://localhost:4200/login
 
-```
-npm install 
-
-ng serve
-```
-
-Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Resources
-*   [Bootstrap](https://getbootstrap.com/)
-*   [ngx bootstrap](https://valor-software.com/ngx-bootstrap/)
-*   [Font awsome](http://fontawesome.io/)
-*   [Angular Perfect Scrollbar](https://github.com/zefoy/ngx-perfect-scrollbar)
-
-## License
-This code is released under the [MIT](https://github.com/azouaoui-med/angular-pro-sidebar/blob/master/LICENSE) license.
+Depues de logueado el sistema mostrara un dashboard con tres opciones en las que podra operar 
+Titulares, cuentas, movimientos
